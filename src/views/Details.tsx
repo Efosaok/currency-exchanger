@@ -1,8 +1,13 @@
 import React from 'react';
+import ExchangeDock from '../components/ExchangeDock';
+import Heading from '../components/Heading';
 
 const Details = () => {
   return (
-    <h3>Details Page</h3>
+    <div className='details'>
+      <Heading />
+      <ExchangeDock />
+    </div>
   )
 }
 

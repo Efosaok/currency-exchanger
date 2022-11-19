@@ -1,0 +1,24 @@
+.currency-block {
+  width: 100%;
+  min-width: 250px;
+  height: 180px;
+  border: 1px solid #000;
+
+  .result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 65px;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    span {
+      display: block;
+      white-space: nowrap;
+      overflow: scroll;
+    }
+  }
+}
+

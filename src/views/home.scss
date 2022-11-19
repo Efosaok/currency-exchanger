@@ -1,0 +1,18 @@
+.home {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .currency-blocks {
+    border: 1px solid #111;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px;
+    margin-top: 500px;
+
+    .block-wrapper {
+      width: 30%;
+      margin-bottom: 15px;
+    }
+  }
+}
