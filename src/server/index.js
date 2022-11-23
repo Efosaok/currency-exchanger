@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
 
 app.get('/symbols', async (_, res) => {
   try {
-    console.log('GOT HERE');
     const results = await axios({
       url: `https://api.apilayer.com/fixer/symbols`,
       method: 'get',
@@ -27,7 +26,6 @@ app.get('/symbols', async (_, res) => {
       },
     });
 
-    console.log('RESULTS', process.env.FIXER_API_KEY, results?.data);
     return res.status(200).json(results?.data);
   } catch (err) {
     return res.status(500).json(err?.data);
