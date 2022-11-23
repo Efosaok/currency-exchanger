@@ -1,18 +1,18 @@
-import React from 'react';
-import ExchangeDock from '../components/ExchangeDock';
-import Heading from '../components/Heading';
-import HistoricalRates from '../components/HistoricalRates';
+import React from "react";
+import ExchangeDock from "../components/ExchangeDock";
+import Heading from "../components/Heading";
+import HistoricalRates from "../components/HistoricalRates";
 
-import './details.scss';
+import "./details.scss";
 
 const Details = () => {
   return (
-    <div className='details'>
+    <div className="details">
       <Heading />
       <ExchangeDock />
       <HistoricalRates />
     </div>
-  )
-}
+  );
+};
 
 export default Details;
