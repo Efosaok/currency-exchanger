@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import axiosInstance from "../constants/axiosInstance";
 import useUrlConversionParams from "./useUrlConversionParams";
 
@@ -20,26 +19,22 @@ export interface ConvertCurrenciesResponse {
 }
 
 const useConverter = () => {
-  const [canConvert, setCanConvert] = useState(false);
-
   const {
     stringifiedParams,
     updateParam,
     from,
     to,
     amount,
+    goToDetailsPage,
+    goToHome,
+    isDetailsPage,
   } = useUrlConversionParams();
 
   const convertFetch = (): Promise<ConvertCurrenciesResponse> => axiosInstance
-    .get(`convert?${stringifiedParams}`)
-    .then((response) => {
-      setCanConvert(false);
-      return response.data
-    });
+    .get(`/convert?${stringifiedParams}`)
+    .then((response) => response.data);
 
-  const enableConversion = () => setCanConvert(true);
-
-  const { data, isLoading, isFetched } = useQuery([from, to, amount], { queryFn: convertFetch, enabled: canConvert, keepPreviousData: true });
+  const { data, isLoading, isFetched, refetch: convert } = useQuery([from, to, amount], { queryFn: convertFetch, enabled: false, keepPreviousData: true });
 
   const result = data?.result;
   const previousAmount = data?.query?.amount || 1;
@@ -47,13 +42,16 @@ const useConverter = () => {
   return {
     result,
     isLoading,
-    enableConversion,
+    convert,
     from,
     to,
     amount,
     previousAmount,
     updateParam,
     isFetched,
+    goToDetailsPage,
+    isDetailsPage,
+    goToHome,
   }
 }
 

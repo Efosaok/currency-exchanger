@@ -1,7 +1,7 @@
 .exchange-dock {
   position: fixed;
-  width: 100%;
-  top: 96px;
+  width: 98.5%;
+  top: 111px;
   z-index: 1;
   background: #fff;
 
@@ -10,10 +10,19 @@
   }
 
   .title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     .title-wrap {
       h2 {
         font-size: 45px;
         font-weight: 200;
+      }
+    }
+
+    .go-back-wrap {
+      button {
+        height: 30px;
       }
     }
   }
@@ -64,14 +73,15 @@
         .arrow-to-from {
           margin-left: 20px;
           margin-right: 20px;
+          margin-top: auto;
 
           .arrow.from {
             transform: rotate(180deg);
           }
           .arrow {
             img {
-              width: 30px;
-              height: 18px;
+              width: 18px;
+              height: 10px;
             }
           }
         }
@@ -92,7 +102,7 @@
         margin-top: 15px;
         .results-wrap {
           height: 60px;
-          width: 49%;
+          width: 100%;
           border: 1px solid #111;
 
           h4 {
@@ -102,12 +112,13 @@
 
         .more-details {
           margin-left: 15px;
-          width: 49%;
+          width: 100%;
           display: flex;
           align-items: center;
 
           button {
             width: 100%;
+            height: 30px;
           }
         }
       }
