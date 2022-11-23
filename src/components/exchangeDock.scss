@@ -56,12 +56,17 @@
 
       .unit-exchange-value {
         border: 1px solid #111;
+        background: #999;
         width: 100%;
         height: 45px;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
+        white-space: nowrap;
+        overflow: scroll;
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
 
@@ -121,6 +126,34 @@
             height: 30px;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .exchange-dock {
+    position: relative;
+    .dock {
+      flex-direction: column;
+      border: none;
+      padding: 0px;
+  
+      .amount-x-unit {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        .amount {
+          margin-top: 10px;
+        }
+  
+        .unit-exchange-value {
+        }
+      }
+  
+      .currency-selectors {
+        width: 100%;
+        margin-top: 20px;
       }
     }
   }

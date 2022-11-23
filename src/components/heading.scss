@@ -3,6 +3,7 @@
   top: 15px;
   width: 98.5%;
   background: #fff;
+  z-index: 2;
 
   .heading-section {
     display: flex;
@@ -28,6 +29,7 @@
           height: 35px;
           border-radius: 3px;
           border: 1px solid #111;
+          cursor: pointer;
         }
   
         button:nth-child(2) {
@@ -37,4 +39,9 @@
     }
   }
   
+  @media screen and (max-width: 600px) {
+    .heading-section {
+      border: none;
+    }
+  }
 }

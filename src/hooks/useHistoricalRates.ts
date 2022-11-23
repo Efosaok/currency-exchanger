@@ -38,11 +38,12 @@ const useHistoricalRates = () => {
     queryFn: (): Promise<HistoricalRatesFetchResponse> => historicalRatesFetch(queryDay),
     queryKey: [from, to, queryDay],
     enabled: !!conversionData,
+    keepPreviousData: true,
   }));
 
   const historicalRates: any = useQueries({ queries });
 
-  const loading = !historicalRates;
+  const loading = historicalRates[0]?.isLoading;
 
   const options = {
     responsive: true,

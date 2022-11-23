@@ -31,7 +31,7 @@ const useExchangeDock = () => {
 
   const currencies = Object.keys(data?.symbols || {});
 
-  const title = isDetailsPage ? `${from} - ${data?.symbols?.[from as keyof Symbols]}` : 'Currency Exchanger';
+  const title = isDetailsPage ? `${from} - ${data?.symbols?.[from as keyof Symbols] || ''}` : 'Currency Exchanger';
 
   return {
     data,

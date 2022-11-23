@@ -12,6 +12,7 @@ import { Bar } from 'react-chartjs-2';
 import useHistoricalRates from '../hooks/useHistoricalRates';
 
 import './historicalRates.scss';
+import { ClipLoader } from 'react-spinners';
 
 ChartJS.register(
   CategoryScale,
@@ -29,7 +30,7 @@ const HistoricalRates = () => {
     <div className='historical-rates'>
       <div className='bar-chart-wrap'>
         {loading ? (
-          <div className='loading-wrap'><p>Historical Rates</p></div>
+          <div className='loading-wrap'><ClipLoader color='#111' /></div>
         ) : (<Bar data={data} options={options} />)}
       </div>
     </div>
