@@ -1,0 +1,37 @@
+.home {
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #fff;
+
+  .currency-blocks {
+    border: 1px solid #111;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px;
+    margin-top: 500px;
+
+    .block-wrapper {
+      width: 30%;
+      margin-bottom: 15px;
+    }
+  }
+
+  @media screen and (max-width: 859px) {
+    .currency-blocks {
+      flex-direction: column;
+
+      .block-wrapper {
+        width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .currency-blocks {
+      border: none;
+      padding: 0px;
+      margin-top: 150px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.heading-wrap {
+  position: fixed;
+  top: 15px;
+  width: 98.5%;
+  background: #fff;
+  z-index: 2;
+
+  .heading-section {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border: 1px solid #111;
+  
+    .icon-wrap {
+      img {
+        width: 50px;
+      }
+    }
+  
+    .template-details {
+      display: flex;
+  
+      .details-btn-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        button {
+          height: 35px;
+          border-radius: 3px;
+          border: 1px solid #111;
+          cursor: pointer;
+        }
+  
+        button:nth-child(2) {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .heading-section {
+      border: none;
+    }
+  }
+}
