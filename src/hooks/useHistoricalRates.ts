@@ -14,8 +14,13 @@ interface HistoricalRatesFetchResponse {
 const useHistoricalRates = () => {
   const { from, to, amount } = useUrlConversionParams();
 
-  const historicalRatesFetch = (day: string): Promise<HistoricalRatesFetchResponse> => axiosInstance.get(`/historical-rates/${day}?from=${from}&to=${to}`);
-  const { data: conversionData } = useQuery([from, to, amount], { enabled: false });
+  const historicalRatesFetch = (
+    day: string
+  ): Promise<HistoricalRatesFetchResponse> =>
+    axiosInstance.get(`/historical-rates/${day}?from=${from}&to=${to}`);
+  const { data: conversionData } = useQuery([from, to, amount], {
+    enabled: false,
+  });
 
   const date = new Date();
   const previousYear = date.getFullYear() - 1;
@@ -35,7 +40,8 @@ const useHistoricalRates = () => {
   ];
 
   const queries: UseQueryOptions[] = queryDays.map((queryDay) => ({
-    queryFn: (): Promise<HistoricalRatesFetchResponse> => historicalRatesFetch(queryDay),
+    queryFn: (): Promise<HistoricalRatesFetchResponse> =>
+      historicalRatesFetch(queryDay),
     queryKey: [from, to, queryDay],
     enabled: !!conversionData,
     keepPreviousData: true,
@@ -49,26 +55,41 @@ const useHistoricalRates = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: "top" as const,
       },
       title: {
         display: true,
-        text: 'Historical Rates',
+        text: "Historical Rates",
       },
     },
   };
-  
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  const ratesData = historicalRates?.map((res: any) => res?.data?.data?.rates?.[to as keyof Symbols]);
+  const labels = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const ratesData = historicalRates?.map(
+    (res: any) => res?.data?.data?.rates?.[to as keyof Symbols]
+  );
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Rates',
+        label: "Rates",
         data: ratesData,
-        backgroundColor: 'rgb(0,0,0)',
+        backgroundColor: "rgb(0,0,0)",
       },
     ],
   };
@@ -77,7 +98,7 @@ const useHistoricalRates = () => {
     loading,
     data,
     options,
-  }
+  };
 };
 
 export default useHistoricalRates;

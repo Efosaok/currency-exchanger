@@ -32,16 +32,23 @@ const useConverter = () => {
     isDetailsPage,
   } = useUrlConversionParams();
 
-  const convertFetch = (): Promise<ConvertCurrenciesResponse> => axiosInstance
-    .get(`/convert?${stringifiedParams}`)
-    .then((response) => {
+  const convertFetch = (): Promise<ConvertCurrenciesResponse> =>
+    axiosInstance.get(`/convert?${stringifiedParams}`).then((response) => {
       setIsInitialLoad(false);
       return response.data;
     });
 
   const enableFetch = isInitialLoad && isDetailsPage;
 
-  const { data, isLoading, isFetched, refetch: convert } = useQuery([from, to, amount], { queryFn: convertFetch, enabled: enableFetch });
+  const {
+    data,
+    isLoading,
+    isFetched,
+    refetch: convert,
+  } = useQuery([from, to, amount], {
+    queryFn: convertFetch,
+    enabled: enableFetch,
+  });
 
   const result = data?.result;
   const previousAmount = data?.query?.amount || 1;
@@ -59,7 +66,7 @@ const useConverter = () => {
     goToDetailsPage,
     isDetailsPage,
     goToHome,
-  }
-}
+  };
+};
 
 export default useConverter;
