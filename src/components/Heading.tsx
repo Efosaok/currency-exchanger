@@ -17,8 +17,8 @@ const Heading = () => {
         </div>
         <div className="template-details">
           <div className="details-btn-wrap">
-            <button onClick={goToEURToGBP}>EUR-USD Details</button>
-            <button onClick={goToEURToUSD}>EUR-GBP Details</button>
+            <button onClick={goToEURToUSD}>EUR-USD Details</button>
+            <button onClick={goToEURToGBP}>EUR-GBP Details</button>
           </div>
         </div>
       </div>

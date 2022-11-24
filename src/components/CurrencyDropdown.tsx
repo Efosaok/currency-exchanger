@@ -16,13 +16,18 @@ const CurrencyDropdown: React.FC<CurrencyDropdownProps> = ({
   defaultCurrency,
   currencies,
 }) => {
-  const { currency, chooseCurrency, showCurrency, toggleShowCurrency } =
-    useCurrencyDropdown({ defaultCurrency });
+  const {
+    currency,
+    chooseCurrency,
+    showCurrency,
+    toggleShowCurrency,
+    currencyClassName,
+  } = useCurrencyDropdown({ defaultCurrency, label });
 
   return (
     <div className="currency-dropdown">
       <label>{label}</label>
-      <div className="currency" onClick={() => toggleShowCurrency(label)}>
+      <div className={currencyClassName} onClick={toggleShowCurrency}>
         <span>
           {currency || "Select One"}{" "}
           <img

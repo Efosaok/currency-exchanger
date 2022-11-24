@@ -1,20 +1,26 @@
 import { useState } from "react";
 import useUrlConversionParams from "./useUrlConversionParams";
 
-interface UseCurrencyDropdownProps {
-  defaultCurrency: string;
-}
-
 export type CurrencyTargets = "from" | "to";
 
-const useCurrencyDropdown = ({ defaultCurrency }: UseCurrencyDropdownProps) => {
+interface UseCurrencyDropdownProps {
+  defaultCurrency: string;
+  label: CurrencyTargets;
+}
+
+const useCurrencyDropdown = ({
+  defaultCurrency,
+  label,
+}: UseCurrencyDropdownProps) => {
+  const { amount } = useUrlConversionParams();
   const [currency, selectCurrency] = useState(defaultCurrency);
   const [showCurrency, setShowCurrency] = useState(false);
   const { updateParam, isDetailsPage } = useUrlConversionParams();
 
-  const toggleShowCurrency = (target: CurrencyTargets) => {
-    const cannotSelectCurrency = target === "from" && isDetailsPage;
-    if (cannotSelectCurrency) return;
+  const isDisabled = !amount || (isDetailsPage && label === "from");
+
+  const toggleShowCurrency = () => {
+    if (isDisabled) return;
     setShowCurrency(!showCurrency);
   };
 
@@ -24,12 +30,15 @@ const useCurrencyDropdown = ({ defaultCurrency }: UseCurrencyDropdownProps) => {
     updateParam(target, currency);
   };
 
+  const currencyClassName = `currency ${isDisabled && "disabled"}`;
+
   return {
     currency,
     selectCurrency,
     showCurrency,
     toggleShowCurrency,
     chooseCurrency,
+    currencyClassName,
   };
 };
 
